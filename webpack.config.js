@@ -8,33 +8,20 @@ module.exports = {
     },
     module: {
         rules: [{
-          loader: 'babel-loader',
-          test: /\.js$/,
-          exclude: /node_modules/
+            loader: 'babel-loader',
+            test: /\.js$/,
+            exclude: /node_modules/
         }, {
-          test: /\.s?css$/,
-          use: CSSExtract.extract({
+            test: /\.s?css$/,
             use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  sourceMap: true
-                }
-              },
-              {
-                loader: 'sass-loader',
-                options: {
-                  sourceMap: true
-                }
-              }
+                'style-loader',
+                'css-loader',
+                'sass-loader'
             ]
-          })
         }]
-      },
+    },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'public'),
-        historyApiFallback: true,
-        publicPath: '/dist/'
+        contentBase: path.join(__dirname, 'public')
     }
 };
